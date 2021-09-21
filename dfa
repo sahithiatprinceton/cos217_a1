@@ -1,0 +1,57 @@
+/* -------------------------------------------------------------------
+DFA
+Sahithi Tirumala
+
+Textual representation of the A1 Decomment DFA.
+--------------------------------------------------------------------*/
+
+STATES:
+NORMAL (normal (not a comment or string/char literal) text),
+SLASH (seen first /)
+COMMENT (seen first / directly followed by *)
+ENDSTAR (seen first *)
+CQUOTE (seen opening ')
+SQUOTE (seen opening \")
+SPECIALC (seen special \ within char literal)
+SPECIALS (seen special \ within string literal)
+
+
+TRANSITIONS:
+NORMAL (accept):
+      / : SLASH
+      ' : CQUOTE
+      \" : SQUOTE
+      other: NORMAL
+
+SLASH (accept):
+      * : COMMENT
+      / : SLASH
+      ' : CQUOTE
+      \" : SQUOTE
+      other: NORMAL
+
+COMMENT (accept):
+      * : ENDSTAR
+      other: COMMENT
+
+ENDSTAR (accept):
+      * : ENDSTAR
+      / : NORMAL
+      other: COMMENT
+
+CQUOTE (accept):
+      ' : NORMAL
+      \ : SPECIALC
+      other: CQUOTE
+
+SQUOTE (accept):
+       \" : NORMAL
+       \ : SPECIALS
+       other: SQUOTE
+
+SPECIALC (accept):
+       other: CQUOTE
+
+SPECIALS (accept):
+       other: SQUOTE
+

@@ -1,0 +1,11 @@
+-*- mode: compilation; default-directory: "~/cos217_a1/" -*-
+Compilation started at Tue Sep 21 14:01:25
+
+gcc217 decomment.c -o decomment
+decomment.c: In function 'handleNormalState':
+decomment.c:33:15: error: 'IN_QUOTE' undeclared (first use in this function)
+       state = IN_QUOTE;
+               ^
+decomment.c:33:15: note: each undeclared identifier is reported only once for each function it appears in
+
+Compilation exited abnormally with code 1 at Tue Sep 21 14:01:25

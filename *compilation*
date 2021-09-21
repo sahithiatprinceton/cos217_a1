@@ -1,0 +1,6 @@
+-*- mode: compilation; default-directory: "~/cos217_a1/" -*-
+Compilation started at Tue Sep 21 14:02:35
+
+gcc217 decomment.c -o decomment
+
+Compilation finished at Tue Sep 21 14:02:35
